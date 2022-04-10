@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ITE370CarSalesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblBuyer">
+    <Key>
+      <PropertyRef Name="BuyerID" />
+    </Key>
+    <Property Name="BuyerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="tblSales" Relationship="Self.FK__tblSale__BuyerID__2B3F6F97" FromRole="tblBuyer" ToRole="tblSale" />
+  </EntityType>
+  <EntityType Name="tblCar">
+    <Key>
+      <PropertyRef Name="VIN" />
+    </Key>
+    <Property Name="VIN" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Make" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mileage" Type="Int32" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="ListingPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PurchasePrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="tblSales" Relationship="Self.FK__tblSale__VIN__2A4B4B5E" FromRole="tblCar" ToRole="tblSale" />
+  </EntityType>
+  <EntityType Name="tblSale">
+    <Key>
+      <PropertyRef Name="SaleID" />
+    </Key>
+    <Property Name="SaleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SaleDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SalePrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="VIN" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="BuyerID" Type="Int32" Nullable="false" />
+    <Property Name="SalespersonID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblBuyer" Relationship="Self.FK__tblSale__BuyerID__2B3F6F97" FromRole="tblSale" ToRole="tblBuyer" />
+    <NavigationProperty Name="tblCar" Relationship="Self.FK__tblSale__VIN__2A4B4B5E" FromRole="tblSale" ToRole="tblCar" />
+    <NavigationProperty Name="tblSalesperson" Relationship="Self.FK__tblSale__Salespe__2C3393D0" FromRole="tblSale" ToRole="tblSalesperson" />
+  </EntityType>
+  <EntityType Name="tblSalesperson">
+    <Key>
+      <PropertyRef Name="SalespersonID" />
+    </Key>
+    <Property Name="SalespersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="tblSales" Relationship="Self.FK__tblSale__Salespe__2C3393D0" FromRole="tblSalesperson" ToRole="tblSale" />
+  </EntityType>
+  <Association Name="FK__tblSale__BuyerID__2B3F6F97">
+    <End Role="tblBuyer" Type="Self.tblBuyer" Multiplicity="1" />
+    <End Role="tblSale" Type="Self.tblSale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBuyer">
+        <PropertyRef Name="BuyerID" />
+      </Principal>
+      <Dependent Role="tblSale">
+        <PropertyRef Name="BuyerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblSale__VIN__2A4B4B5E">
+    <End Role="tblCar" Type="Self.tblCar" Multiplicity="1" />
+    <End Role="tblSale" Type="Self.tblSale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCar">
+        <PropertyRef Name="VIN" />
+      </Principal>
+      <Dependent Role="tblSale">
+        <PropertyRef Name="VIN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblSale__Salespe__2C3393D0">
+    <End Role="tblSalesperson" Type="Self.tblSalesperson" Multiplicity="1" />
+    <End Role="tblSale" Type="Self.tblSale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSalesperson">
+        <PropertyRef Name="SalespersonID" />
+      </Principal>
+      <Dependent Role="tblSale">
+        <PropertyRef Name="SalespersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ITE370CarSalesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblBuyers" EntityType="Self.tblBuyer" />
+    <EntitySet Name="tblCars" EntityType="Self.tblCar" />
+    <EntitySet Name="tblSales" EntityType="Self.tblSale" />
+    <EntitySet Name="tblSalespersons" EntityType="Self.tblSalesperson" />
+    <AssociationSet Name="FK__tblSale__BuyerID__2B3F6F97" Association="Self.FK__tblSale__BuyerID__2B3F6F97">
+      <End Role="tblBuyer" EntitySet="tblBuyers" />
+      <End Role="tblSale" EntitySet="tblSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblSale__VIN__2A4B4B5E" Association="Self.FK__tblSale__VIN__2A4B4B5E">
+      <End Role="tblCar" EntitySet="tblCars" />
+      <End Role="tblSale" EntitySet="tblSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblSale__Salespe__2C3393D0" Association="Self.FK__tblSale__Salespe__2C3393D0">
+      <End Role="tblSalesperson" EntitySet="tblSalespersons" />
+      <End Role="tblSale" EntitySet="tblSales" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

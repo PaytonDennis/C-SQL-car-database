@@ -1,0 +1,16 @@
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\obj\Debug\Final_P_Dennis.Form1.resources
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\obj\Debug\Final_P_Dennis.Form2.resources
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\obj\Debug\Final_P_Dennis.Properties.Resources.resources
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\obj\Debug\Final_P_Dennis.csproj.GenerateResource.cache
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\obj\Debug\Final_P_Dennis.csproj.CoreCompileInputs.cache
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\bin\Debug\Final_P_Dennis.exe.config
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\bin\Debug\Final_P_Dennis.exe
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\bin\Debug\Final_P_Dennis.pdb
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\bin\Debug\EntityFramework.dll
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\bin\Debug\EntityFramework.SqlServer.dll
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\bin\Debug\EntityFramework.xml
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\bin\Debug\EntityFramework.SqlServer.xml
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\obj\Debug\Final_P_Dennis.csproj.CopyComplete
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\obj\Debug\Final_P_Dennis.exe
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\obj\Debug\Final_P_Dennis.pdb
+F:\visual studio project\Final_P_Dennis\Final_P_Dennis\obj\Debug\Final_P_Dennis.csproj.AssemblyReference.cache
